@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Kote
+ *
+ */
+module Calculator {
+}
