@@ -9,56 +9,69 @@ import java.awt.*;
 import java.awt.event.*;
 
 	
-public class MyCalculator implements ActionListener{
+public class MyCalculator extends JFrame{
 	
-	static JFrame CalcFrame = new JFrame("Kote's Calculator");
-	JTextField t1,t2;
-	Button EqualsButton,ExitButton;
+	JFrame CalcFrame = new JFrame("Kote's Calculator");
+	private JTextField InputField;
+	private JLabel ResultLabel;
+	private Button EqualsButton,ExitButton, AddButton, SubtractButton, MultiplyButton, DivideButton;
+	private JPanel CalcPanel;
 	
-	MyCalculator(){
+	public MyCalculator(){
+		
+		JPanel InputPanel = new JPanel();
+		InputPanel.setLayout(new GridLayout(0,2));
+		
+		InputField = new JTextField("Please input your calculations here");
+		InputPanel.add(InputField);
+		ResultLabel = new JLabel("Results will show here");
+		InputPanel.add(ResultLabel);
+		((GridLayout) InputPanel).setVgap(10);
+		
 			
-	JTextField t1 = new JTextField("Please input your calculations here");
-	t1.setBounds(50,100,200,30);
-	CalcFrame.add(t1);
+		
+		CalcPanel = new JPanel();
+		CalcPanel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
+		CalcPanel.setLayout(new GridLayout(3,2));
+		
+		Button AddButton = new Button("+");
+		CalcPanel.add(AddButton);
+		Button SubtractButton = new Button("-");
+		CalcPanel.add(SubtractButton);
+		Button DivideButton = new Button("/");
+		CalcPanel.add(DivideButton);
+		Button MultiplyButton = new Button("*");
+		CalcPanel.add(MultiplyButton);
+		Button EqualButton = new Button("=");
+		CalcPanel.add(EqualButton);
+		Button ExitButton = new Button("Exit");
+		CalcPanel.add(ExitButton);
+		
 	
-	final JTextField t2 = new JTextField("Results will show here");
-	t2.setEditable(false);
-	t2.setBounds(50,150,200,30);
-	CalcFrame.add(t2);
+		
+		ExitButton.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				CalcFrame.dispose();
+			}
+		});
 	
-	
-	Button EqualButton = new Button("=");
-	EqualButton.setBounds(300,250, 50, 50);
-	CalcFrame.add(EqualButton);
-	
-	Button ExitButton = new Button("Exit");
-	ExitButton.setBounds(300,300, 50, 50);
-	CalcFrame.add(ExitButton);
-	
-
-	
-	ExitButton.addActionListener(this);
-	EqualButton.addActionListener(this);
-	
-	
-	CalcFrame.setSize(400, 400);
-	CalcFrame.setLayout(null);
-	CalcFrame.setVisible(true);
-	
+		//EqualButton.addActionListener(this);
+		
+		CalcFrame.add(InputPanel, BorderLayout.NORTH);
+		CalcFrame.add(new JSeparator(), BorderLayout.CENTER);
+		CalcFrame.add(CalcPanel, BorderLayout.SOUTH);
+		CalcFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		CalcFrame.pack();
+		CalcFrame.setSize(400, 400);
+		CalcFrame.setVisible(true);
+		
+		
 	}
 	
 	
 	
-	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getSource() == ExitButton) {
-				System.exit(0);
-		}
-		else if(e.getSource() == EqualsButton)
-				t2.setText("test");
-		}
-		
-		
+	
 	
 	public static void main(String[] args) {
 		
