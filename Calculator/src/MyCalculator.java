@@ -26,7 +26,7 @@ public class MyCalculator extends JFrame{
 		InputPanel.add(InputField);
 		ResultLabel = new JLabel("Results will show here");
 		InputPanel.add(ResultLabel);
-		((GridLayout) InputPanel).setVgap(10);
+		InputPanel).setVgap(10);
 		
 			
 		
