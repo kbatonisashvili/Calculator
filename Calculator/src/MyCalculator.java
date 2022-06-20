@@ -1,5 +1,5 @@
 /**
- * @author Kote
+  * @author Kote
  *
  */
 
@@ -25,14 +25,17 @@ public class MyCalculator extends JFrame{
 	public class MyButton extends Button{
 		
 		Button defButton = new Button();
+		Color gray = new Color(100,100,100);
+		Color white = new Color(0,0,0);
 		
-		public void setButton (Button defButton) {
+		
+		public MyButton (Button defButton) {
 			this.defButton = defButton;
 		}
 		
 		
 		public Button getButton() {
-			return defButton;
+			return this.defButton;
 		}
 		
 		public void ButColor(Button defButton) {
@@ -58,7 +61,7 @@ public class MyCalculator extends JFrame{
 				
 		FuncPanel = new JPanel();
 		InputField.setBackground(new Color(69,69,69));
-		InputField.setForeground(Color.white);
+		InputField.setForeground(Color.white);	
 		FuncPanel.setLayout(new GridLayout(7,5));
 		
 				
