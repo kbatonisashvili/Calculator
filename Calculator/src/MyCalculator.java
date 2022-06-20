@@ -21,7 +21,7 @@ public class MyCalculator extends JFrame{
 	
 	
 	
-	
+	//Changes
 	public class MyButton extends Button{
 		
 		Button defButton = new Button();
