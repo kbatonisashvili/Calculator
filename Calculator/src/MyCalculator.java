@@ -8,62 +8,153 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-	
+
 public class MyCalculator extends JFrame{
 	
 	JFrame CalcFrame = new JFrame("Kote's Calculator");
 	private JTextField InputField;
-	private JLabel ResultLabel;
-	private Button EqualsButton,ExitButton, AddButton, SubtractButton, MultiplyButton, DivideButton;
-	private JPanel CalcPanel;
+	private JPanel FuncPanel, InputPanel;
+		
+
+	
+	
+	
+	
+	
+	
+	public class MyButton extends Button{
+		
+		Button defButton = new Button();
+		
+		public void setButton (Button defButton) {
+			this.defButton = defButton;
+		}
+		
+		
+		public Button getButton() {
+			return defButton;
+		}
+		
+		public void ButColor(Button defButton) {
+			this.defButton.setBackground(new Color(50,50,50));
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public MyCalculator(){
+				
 		
-		JPanel InputPanel = new JPanel();
-		InputPanel.setLayout(new GridLayout(0,2));
+		InputField = new JTextField("Input here");
+				
+		FuncPanel = new JPanel();
+		InputField.setBackground(new Color(69,69,69));
+		InputField.setForeground(Color.white);
+		FuncPanel.setLayout(new GridLayout(7,5));
 		
-		InputField = new JTextField("Please input your calculations here");
-		InputPanel.add(InputField);
-		ResultLabel = new JLabel("Results will show here");
-		InputPanel.add(ResultLabel);
-		InputPanel).setVgap(10);
+				
 		
-			
-		
-		CalcPanel = new JPanel();
-		CalcPanel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
-		CalcPanel.setLayout(new GridLayout(3,2));
-		
-		Button AddButton = new Button("+");
-		CalcPanel.add(AddButton);
+		//Creating the numbered buttons and adding them to their own panel
+		Button SndButton = new Button("2nd");
+		Button PiButton = new Button("π");
+		Button EButton = new Button("e");
+		Button ClearButton = new Button("CE");
+		Button EraseButton = new Button("Erase");
+		Button SquaredButton = new Button("x^2");
+		Button OveroneButton = new Button("1/x");
+		Button AbsButton = new Button("|x|");
+		Button ExpEButton = new Button("exp");
+		Button ModButton = new Button("mod");
+		Button RootButton = new Button("2nd/x");
+		Button LeftParButton = new Button("(");
+		Button RightParButton = new Button(")");
+		Button FactButton = new Button("n!");
+		Button ExpButton = new Button("x^y");
+		Button TenExButton = new Button("10^x");
+		Button LogButton = new Button("log");
+		Button LnButton = new Button("ln");		
+		Button SymbButton = new Button("+/-");	
+		Button OneButton = new Button("1");
+		Button TwoButton = new Button("2");
+		Button ThreeButton = new Button("3");
+		Button FourButton = new Button("4");
+		Button FiveButton = new Button("5");
+		Button SixButton = new Button("6");
+		Button SevenButton = new Button("7");
+		Button EightButton = new Button("8");
+		Button NineButton = new Button("9");
+		Button ZeroButton = new Button("0");
+		Button AddButton = new Button("+");		
 		Button SubtractButton = new Button("-");
-		CalcPanel.add(SubtractButton);
 		Button DivideButton = new Button("/");
-		CalcPanel.add(DivideButton);
-		Button MultiplyButton = new Button("*");
-		CalcPanel.add(MultiplyButton);
+		Button MultiplyButton = new Button("X");
 		Button EqualButton = new Button("=");
-		CalcPanel.add(EqualButton);
-		Button ExitButton = new Button("Exit");
-		CalcPanel.add(ExitButton);
+		Button DotButton = new Button(".");
 		
+		FuncPanel.add(SndButton);
+		FuncPanel.add(PiButton);
+		FuncPanel.add(EButton);
+		FuncPanel.add(ClearButton);
+		FuncPanel.add(EraseButton);
+		FuncPanel.add(SquaredButton);
+		FuncPanel.add(OveroneButton);
+		FuncPanel.add(AbsButton);
+		FuncPanel.add(ExpEButton);
+		FuncPanel.add(ModButton);
+		FuncPanel.add(RootButton);
+		FuncPanel.add(LeftParButton);
+		FuncPanel.add(RightParButton);
+		FuncPanel.add(FactButton);
+		FuncPanel.add(DivideButton);		
+		FuncPanel.add(ExpButton);
+		FuncPanel.add(SevenButton);
+		FuncPanel.add(EightButton);
+		FuncPanel.add(NineButton);
+		FuncPanel.add(MultiplyButton);
+		FuncPanel.add(TenExButton);
+		FuncPanel.add(FourButton);
+		FuncPanel.add(FiveButton);
+		FuncPanel.add(SixButton);
+		FuncPanel.add(SubtractButton);
+		FuncPanel.add(LogButton);
+		FuncPanel.add(OneButton);
+		FuncPanel.add(TwoButton);
+		FuncPanel.add(ThreeButton);
+		FuncPanel.add(AddButton);
+		FuncPanel.add(LnButton);
+		FuncPanel.add(SymbButton);
+		FuncPanel.add(ZeroButton);
+		FuncPanel.add(DotButton);
+		FuncPanel.add(EqualButton);
+		
+		/*
+		 * DotButton.addActionListener(new ActionListener(){
+		 * 
+		 * public void actionPerformed(ActionEvent e) { CalcFrame.dispose(); } });
+		 */
 	
 		
-		ExitButton.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e) {
-				CalcFrame.dispose();
-			}
-		});
-	
-		//EqualButton.addActionListener(this);
+		InputField.addMouseListener(new MouseAdapter() {
+			  @Override
+			  public void mouseClicked(MouseEvent e) {
+			    InputField.setText("");
+			  }
+			});
 		
-		CalcFrame.add(InputPanel, BorderLayout.NORTH);
-		CalcFrame.add(new JSeparator(), BorderLayout.CENTER);
-		CalcFrame.add(CalcPanel, BorderLayout.SOUTH);
+		CalcFrame.setLayout(new GridLayout(2,1));
+		CalcFrame.add(InputField);
+		CalcFrame.add(FuncPanel);
 		CalcFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		CalcFrame.pack();
-		CalcFrame.setSize(400, 400);
+		CalcFrame.setSize(1000, 1000);
 		CalcFrame.setVisible(true);
 		
 		
